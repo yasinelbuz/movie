@@ -9,7 +9,6 @@ export default function Layout({ children }: LayoutPropsTypes) {
 		<>
 			<Component.Header />
 			{children}
-			<Component.Footer />
 		</>
 	);
 }

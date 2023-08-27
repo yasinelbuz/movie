@@ -11,7 +11,7 @@ const routes = [
 		),
 	},
 	{
-		path: "movie-detail",
+		path: "/movie-detail",
 		element: (
 			<Component.Layout>
 				<Pages.MovieDetail />
