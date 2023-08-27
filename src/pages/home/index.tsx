@@ -19,7 +19,7 @@ export default function Home() {
 	});
 
 	const [search, setSearch] = useState("pokemon");
-	const [type, setType] = useState();
+	const [type, setType] = useState("");
 	const [year, setYear] = useState();
 
 	const columns = [
@@ -76,6 +76,10 @@ export default function Home() {
 		[data] as any
 	);
 
+	const handleClear = () => {
+		setType("");
+	};
+
 	if (isLoading) {
 		return (
 			<StylesHome>
@@ -99,7 +103,7 @@ export default function Home() {
 				<Select
 					placeholder='Select Type'
 					onChange={(e) => setType(e)}
-					onClear={(e: any) => setType("")}
+					onClear={handleClear}
 					allowClear
 					options={[
 						{ value: "movie", label: "Movie" },
@@ -126,7 +130,7 @@ export default function Home() {
 				columns={columns}
 				loading={isLoading}
 				onChange={(paginate) =>
-					setPagination((prev: any) => ({ ...pagination, current: paginate?.current } as any))
+					setPagination((_prev: any) => ({ ...pagination, current: paginate?.current } as any))
 				}
 				pagination={{ ...pagination }}
 				bordered
