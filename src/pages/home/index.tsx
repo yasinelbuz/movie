@@ -60,9 +60,9 @@ export default function Home() {
 			align: "right",
 			render: (imdbID: string) => <Link to={`/movie-detail?imdbID=${imdbID}`}>Detail</Link>,
 		},
-	];
+	] as any;
 
-	const { data, error, isLoading } = api.useGetMoviesQuery({
+	const { data, isLoading } = api.useGetMoviesQuery({
 		search: search,
 		page: pagination.current,
 		type,
@@ -71,7 +71,7 @@ export default function Home() {
 
 	useEffect(
 		() => {
-			setPagination((prev: any) => ({ ...pagination, total: data?.totalResults } as any));
+			setPagination({ ...pagination, total: data?.totalResults } as any);
 		},
 		[data] as any
 	);
@@ -90,7 +90,7 @@ export default function Home() {
 				<InputNumber
 					min={1900}
 					max={2023}
-					onChange={(e) => setYear(e)}
+					onChange={(e: any) => setYear(e)}
 					placeholder='Select Year'
 					size='large'
 					className='inputNumber'
@@ -98,8 +98,8 @@ export default function Home() {
 
 				<Select
 					placeholder='Select Type'
-					onChange={(e) => setType((prev) => e)}
-					onClear={() => setType("")}
+					onChange={(e) => setType(e)}
+					onClear={(e: any) => setType("")}
 					allowClear
 					options={[
 						{ value: "movie", label: "Movie" },
